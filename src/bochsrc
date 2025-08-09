@@ -1,0 +1,31 @@
+# ==== Bochs Configuration ====
+
+plugin_ctrl: unmapped=true, biosdev=true, speaker=true, parallel=true, serial=true
+
+config_interface: textconfig
+display_library: x, options="gui_debug"
+
+magic_break: enabled=1
+
+# ==== 記憶體設定 ====
+memory: host=32, guest=32
+
+# ==== BIOS ====
+romimage: file="/usr/local/share/bochs/BIOS-bochs-latest" , address=0x00000000,options=none
+vgaromimage: file="/usr/local/share/bochs/VGABIOS-lgpl-latest"
+
+# ==== 開機來源 ====
+boot: disk
+
+# ==== 硬碟映像設定 ====
+ata0: enabled=true, ioaddr1=0x1f0, ioaddr2=0x3f60 irq=14
+ata0-master: type=disk, path="./hd.img", mode=flat
+ata0-slave: type=none
+
+ata1: enabled=false
+ata2: enabled=false
+ata3: enabled=false
+
+# ==== 不使用軟碟、光碟 ====
+floppya: type=none
+floppyb: type=none
